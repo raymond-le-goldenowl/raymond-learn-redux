@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from "redux";
 import todoReducer from "./todo";
-
+import { composeWithDevTools } from "redux-devtools-extension";
 const reducer = combineReducers({ todo: todoReducer });
-
-export default createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const composedEnhancers = composeWithDevTools();
+export default createStore(reducer, composedEnhancers);

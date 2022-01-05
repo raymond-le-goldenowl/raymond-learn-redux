@@ -1,0 +1,11 @@
+{
+  "name": "raymond-learn-redux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:raymond-le-goldenowl/raymond-learn-redux.git",
+  "author": "raymond-le-goldenowl <raymond.le.goldenowl@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "redux": "^4.1.2"
+  }
+}

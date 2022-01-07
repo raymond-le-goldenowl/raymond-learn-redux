@@ -1,18 +1,23 @@
 import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 const initialState = { items: [] };
 
-const ADD_TODO = "ADD_TODO";
-const SET_TODOS = "SET_TODOS";
-
-export const addTodo = (text) => ({
-  type: ADD_TODO,
-  payload: text,
+//* Create reducers and actions
+const todo = createSlice({
+  name: "todo",
+  initialState,
+  reducers: {
+    addTodo: (state, action) => {
+      state.items.push(action.payload);
+    },
+    setTodos: (state, action) => {
+      state.items = action.payload;
+    },
+  },
 });
 
-export const setTodos = (items) => ({
-  type: SET_TODOS,
-  payload: items,
-});
+//* Exporting all actions here.
+export const { addTodo, setTodos } = todo.actions;
 
 //* Return a action.
 export const fetchTodos = () => async (dispatch) => {
@@ -20,21 +25,5 @@ export const fetchTodos = () => async (dispatch) => {
   dispatch(setTodos(res.data));
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
-    case SET_TODOS:
-      return {
-        ...state,
-        items: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
-export default reducer;
+//* We need export reducer to createStore()
+export default todo.reducer;

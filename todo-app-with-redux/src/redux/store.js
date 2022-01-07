@@ -6,4 +6,13 @@ const composedEnhancers = composeWithDevTools();
 const myMiddleware = (store) => (next) => (action) => {
   return next(action);
 };
-export default createStore(reducer, applyMiddleware(myMiddleware));
+const asyncMiddleware = (store) => (next) => (action) => {
+  if (typeof action === "function") {
+    return action(next);
+  }
+  return next(action);
+};
+export default createStore(
+  reducer,
+  applyMiddleware(myMiddleware, asyncMiddleware)
+);

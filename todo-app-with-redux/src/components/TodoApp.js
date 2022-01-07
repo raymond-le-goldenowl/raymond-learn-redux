@@ -4,7 +4,6 @@ export default function TodoApp({ todos, addTodo, fetchTodos }) {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    //* fetch all todos and set todos to sate. User don't need to know handle inside
     fetchTodos();
   }, [fetchTodos]);
 

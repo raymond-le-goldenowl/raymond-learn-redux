@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function TodoApp({ todos, addTodo }) {
+export default function TodoApp({ todos, addTodo, fetchTodos }) {
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    //* fetch all todos and set todos to sate. User don't need to know handle inside
+    fetchTodos();
+  }, [fetchTodos]);
+
   return (
     <div>
       <input
@@ -12,7 +18,9 @@ export default function TodoApp({ todos, addTodo }) {
       <button onClick={() => addTodo(text)}>Add</button>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index + Date.now()}>{todo}</li>
+          <li key={todo.id}>
+            <b>{index + 1}</b>: {todo.title}
+          </li>
         ))}
       </ul>
     </div>

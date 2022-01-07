@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import todoReducer from "./todo";
 import { composeWithDevTools } from "redux-devtools-extension";
 const reducer = combineReducers({ todo: todoReducer });
@@ -14,5 +15,5 @@ const asyncMiddleware = (store) => (next) => (action) => {
 };
 export default createStore(
   reducer,
-  applyMiddleware(myMiddleware, asyncMiddleware)
+  applyMiddleware(myMiddleware, thunk)
 );

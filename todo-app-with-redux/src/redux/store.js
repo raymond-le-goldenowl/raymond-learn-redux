@@ -1,13 +1,9 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import todoReducer from "./todo";
-import { composeWithDevTools } from "redux-devtools-extension";
 const reducer = combineReducers({ todo: todoReducer });
-const myMiddleware = (store) => (next) => (action) => {
-  return next(action);
-};
 
-export default createStore(
+//* auto setup thunk, redux devtools, ...
+export default configureStore({
   reducer,
-  applyMiddleware(myMiddleware, thunk)
-);
+});

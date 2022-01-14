@@ -1,0 +1,27 @@
+const initialState = {
+	todoList: [
+		{ id: 1, title: 'eat', completed: false },
+		{ id: 2, title: 'sleep', completed: true },
+		{ id: 3, title: 'code', completed: false }
+	]
+}
+
+const todoReducer = (state = initialState, action) => {
+	switch (action.type) {
+		case 'todo/markComplete': {
+			return {
+				...state,
+				todoList: state.todoList.map(todo => {
+					if (todo.id === action.payload) {
+						return { ...todo, completed: !todo.completed }
+					}
+					return todo
+				})
+			}
+		}
+		default:
+			return state
+	}
+}
+
+export default todoReducer

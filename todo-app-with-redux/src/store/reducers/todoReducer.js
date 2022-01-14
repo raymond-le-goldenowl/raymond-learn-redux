@@ -8,6 +8,9 @@ const initialState = {
 
 const todoReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case 'todo/getTodoList': {
+			return { ...state, todoList: action.payload }
+		}
 		case 'todo/markComplete': {
 			return {
 				...state,

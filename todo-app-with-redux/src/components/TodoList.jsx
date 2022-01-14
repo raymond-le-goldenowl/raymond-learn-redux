@@ -1,5 +1,5 @@
+import TodoForm from 'containers/TodoForm'
 import React from 'react'
-import TodoForm from './TodoForm'
 
 export default function TodoList({ todoList, markComplete, removeTodo }) {
 	const handleCheckboxChange = id => {

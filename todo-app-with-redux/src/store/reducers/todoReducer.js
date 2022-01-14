@@ -19,9 +19,13 @@ const todoReducer = (state = initialState, action) => {
 				})
 			}
 		}
+
 		case 'todo/removeTodo':
 			const newTodoList = state.todoList.filter(todo => todo.id !== action.payload)
 			return { ...state, todoList: newTodoList }
+
+		case 'todo/addTodo':
+			return { ...state, todoList: [...state.todoList, action.payload] }
 
 		default:
 			return state

@@ -1,5 +1,5 @@
 import TodoList from 'components/TodoList'
-import { markComplete, removeTodo } from 'store/actions/todoListActions'
+import { addTodo, markComplete, removeTodo } from 'store/actions/todoListActions'
 
 const { connect } = require('react-redux')
 

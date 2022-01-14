@@ -7,3 +7,8 @@ export const removeTodo = id => ({
 	type: 'todo/removeTodo',
 	payload: id
 })
+
+export const addTodo = todoData => ({
+	type: 'todo/addTodo',
+	payload: todoData
+})

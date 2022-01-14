@@ -1,11 +1,14 @@
 import React from 'react'
 import TodoForm from './TodoForm'
 
-export default function TodoList({ todoList, markComplete }) {
+export default function TodoList({ todoList, markComplete, removeTodo }) {
 	const handleCheckboxChange = id => {
 		markComplete(id)
 	}
 
+	const handleButtonDeleteClick = id => {
+		removeTodo(id)
+	}
 	return (
 		<div className='todo-list'>
 			<TodoForm />
@@ -23,7 +26,7 @@ export default function TodoList({ todoList, markComplete }) {
 											handleCheckboxChange(todo.id)
 										}}
 									/>
-									<button>Delete</button>
+									<button onClick={() => handleButtonDeleteClick(todo.id)}>Delete</button>
 								</div>
 							</li>
 						)

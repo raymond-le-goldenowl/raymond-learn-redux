@@ -19,6 +19,10 @@ const todoReducer = (state = initialState, action) => {
 				})
 			}
 		}
+		case 'todo/removeTodo':
+			const newTodoList = state.todoList.filter(todo => todo.id !== action.payload)
+			return { ...state, todoList: newTodoList }
+
 		default:
 			return state
 	}

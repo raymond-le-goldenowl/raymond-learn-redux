@@ -1,5 +1,5 @@
 import TodoList from 'components/TodoList'
-import { markComplete } from 'store/actions/todoListActions'
+import { markComplete, removeTodo } from 'store/actions/todoListActions'
 
 const { connect } = require('react-redux')
 
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = dispatch => ({
-	markComplete: id => dispatch(markComplete(id))
+	markComplete: id => dispatch(markComplete(id)),
+	removeTodo: id => dispatch(removeTodo(id))
 })
 
 export default connect(mapStateToProps, mapActionsToProps)(TodoList)

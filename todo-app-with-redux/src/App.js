@@ -1,9 +1,13 @@
+import Navbar from 'components/Navbar'
+import TodoList from 'components/TodoList'
+
 import React from 'react'
 
 export default function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  )
+	return (
+		<div className='app'>
+			<Navbar />
+			<TodoList />
+		</div>
+	)
 }

@@ -10,7 +10,10 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = dispatch => ({
 	markComplete: id => dispatch(markComplete(id)),
-	removeTodo: id => dispatch(removeTodo(id)),
+	removeTodo: async id => {
+		await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+		dispatch(removeTodo(id))
+	},
 	getTodoList: async () => {
 		const resTodoList = await axios.get('https://jsonplaceholder.typicode.com/todos/?_limit=4')
 		dispatch(getTodoList(resTodoList.data))

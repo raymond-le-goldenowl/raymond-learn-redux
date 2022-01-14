@@ -1,3 +1,5 @@
+import { ADD_TODO, GET_TODO_LIST, MARK_COMPLETE, REMOVE_TODO } from 'store/types/todoTypes'
+
 const initialState = {
 	todoList: [
 		{ id: 1, title: 'eat', completed: false },
@@ -8,10 +10,10 @@ const initialState = {
 
 const todoReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'todo/getTodoList': {
+		case GET_TODO_LIST: {
 			return { ...state, todoList: action.payload }
 		}
-		case 'todo/markComplete': {
+		case MARK_COMPLETE: {
 			return {
 				...state,
 				todoList: state.todoList.map(todo => {
@@ -23,11 +25,11 @@ const todoReducer = (state = initialState, action) => {
 			}
 		}
 
-		case 'todo/removeTodo':
+		case REMOVE_TODO:
 			const newTodoList = state.todoList.filter(todo => todo.id !== action.payload)
 			return { ...state, todoList: newTodoList }
 
-		case 'todo/addTodo':
+		case ADD_TODO:
 			return { ...state, todoList: [...state.todoList, action.payload] }
 
 		default:

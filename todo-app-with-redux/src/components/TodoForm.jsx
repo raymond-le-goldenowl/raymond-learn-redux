@@ -5,7 +5,9 @@ export default function TodoForm({ addTodo }) {
 	const [title, setTitle] = useState('')
 	const handleFormAddTodoSubmit = event => {
 		event.preventDefault()
-		addTodo({ id: nanoid(4), title: title, completed: false })
+		addTodo({ id: nanoid(4), title: title, completed: false }).then(() => {
+			setTitle('')
+		})
 	}
 	return (
 		<div className='todo-form'>
